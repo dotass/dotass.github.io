@@ -1,0 +1,183 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+	font-size: 16px;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+/* Start Your Code Here */
+
+h1 {
+	text-align: center;
+	line-height: 80px;
+	font-size: 250%;
+	color: red;
+}
+
+h2 {
+	font-size: 180%;
+	line-height: 100%;
+}
+
+div {
+	height: 140px;
+	width: auto;
+	border-radius: 5px;
+	border: 2px solid black;
+	background-color: #D6C2FF;
+}
+
+#header {
+	margin: 1%;
+	padding: 4px;
+	text-align: center;
+	clear: both;
+}
+
+
+#footer {
+	padding: 4px;
+	margin: 1%;
+	clear: both;
+	text-align: center;
+}
+
+.left {
+	margin-left: 1%;
+	padding: 4px;
+	width: calc(83% - 12px);
+	margin-top: 1%;
+	margin-bottom: 1%;
+	float: left;
+}
+
+.right {
+	margin-right: 1%;
+	padding: 4px;
+	width: calc(14% - 12px);
+	margin-top: 1%;
+	float: right;
+}
+
+.centertext {
+	text-align:center;
+}
+
+#yellow {
+	background-color: yellow;
+}
+
+#green {
+	background-color: green;
+}
+
+#red {
+	background-color: red;
+}
+
+#rps {
+	text-align:center;
+}
+
+#fullscreen {
+	font-size: 7;
+	text-align: center;
+}
+
+#hitpoints {
+	font-size: 250%;
+}
+
+#experience {
+	font-size: 250%;
+
+#rock {
+	font-size: 100%;
+	margin: 1%;
+}
+
+#paper {
+	font-size: 100%;
+	margin: 1%;
+}
+
+#scissors {
+	font-size: 100%;
+	margin: 1%;
+}
+
+#RPSresults {
+	font-size: 250%;
+	text-align: center;
+}
+
+
+.pfooter {
+	text-align: center;
+	line-height: 40px;
+	color: red;
+}
+
+@media (max-width: 300px) {
+	#header {
+		position: relative;
+		}
+	.left {
+		float: none;
+		width: auto;
+		margin: 1%;
+		height: auto;
+	}
+	.right {
+		float: none;
+		width: auto;
+		margin: 1%;
+		height: auto;
+	}
+	h1 {
+		font-size: 100%;
+	}
+}
