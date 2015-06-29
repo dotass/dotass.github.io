@@ -6,14 +6,30 @@ $(document).ready(function() {
 		hitPoints = hitPoints -1;
 		if(hitPoints === 0)
 		{
+			$('#rock').removeClass('activeRock');
+			$('#paper').removeClass('activePaper');
+			$('#scissors').removeClass('activeScissors');
 			$('#rock').hide();
 			$('#paper').hide();
 			$('#scissors').hide();
+
 			$('#RPSresults').text("GAME OVER");
+			if(experience === 10)
+			{
+				$('#gameOverText').text("Win some, lose some, tie some. Hooray!");
+			}
+			else if(experience > 10)
+			{
+				$('#gameOverText').text("Luck is with you today!");
+			}
+			else
+			{
+				$('#gameOverText').text("Next time... do what Bart Simpson does.");
+			}
 		};
 		};
 
-	$('#rock').click(function() {
+	$('.activeRock').click(function() {
 
 		var computerChoice = Math.random();
 
@@ -34,7 +50,7 @@ $(document).ready(function() {
 		};
 	});
 
-	$('#paper').click(function() {
+	$('.activePaper').click(function() {
 
 		var computerChoice = Math.random();
 
@@ -55,7 +71,7 @@ $(document).ready(function() {
 		};
 	});
 
-	$('#scissors').click(function() {
+	$('.activeScissors').click(function() {
 
 		var computerChoice = Math.random();
 
