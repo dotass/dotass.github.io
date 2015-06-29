@@ -74,7 +74,7 @@ div {
 	padding: 4px;
 }
 
-.fullscreendiv {
+.full-screen-div {
 	width: calc(98% - 12px);
 	margin: 1%;
 }
@@ -106,7 +106,7 @@ div {
 	margin-bottom: 1%;
 }
 
-.threePartLeft {
+.three-part-left {
 	width: calc(32% - 12px);
 	margin-left: 1%;
 	margin-right: 1%;
@@ -114,7 +114,7 @@ div {
 	float: left;
 }
 
-.threePartRight {
+.three-part-right {
 	width: calc(32% - 12px);
 	margin-right: 1%;
 	margin-left: 1%;
@@ -123,17 +123,17 @@ div {
 
 }
 
-.threePartCenter {
+.three-part-center {
 	width: calc(32% - 12px);
 	float: left;
 	margin-bottom: 1%;
 }
 
-.centerText {
+.center-text {
 	text-align:center;
 }
 
-.centerOfDiv {
+.center-of-div {
 	line-height: 80px;
 	text-align: center;
 	margin-top: 30px;
@@ -155,12 +155,12 @@ div {
 	margin: 1%;
 }
 
-#fullscreen {
+#full-screen {
 	font-size: 7;
 	text-align: center;
 }
 
-#hitpoints {
+#hit-points {
 	font-size: 250%;
 }
 
