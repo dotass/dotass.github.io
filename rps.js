@@ -6,12 +6,14 @@ $(document).ready(function() {
 		hitPoints = hitPoints -1;
 		if(hitPoints === 0)
 		{
-			$('#rock').removeClass('activeRock');
-			$('#paper').removeClass('activePaper');
-			$('#scissors').removeClass('activeScissors');
-			$('#rock').hide();
-			$('#paper').hide();
-			$('#scissors').hide();
+
+			$('.activeRock').off('click', rpsRockChoice);
+			$('.activePaper').off('click', rpsPaperChoice);
+			$('.activeScissors').off('click', rpsScissorsChoice);
+
+			$('#rock').fadeOut('slow');
+			$('#paper').fadeOut('slow');
+			$('#scissors').fadeOut('slow');
 
 			$('#RPSresults').text("GAME OVER");
 			if(experience === 10)
@@ -27,10 +29,9 @@ $(document).ready(function() {
 				$('#gameOverText').text("Next time... do what Bart Simpson does.");
 			}
 		};
-		};
+	};
 
-	$('.activeRock').click(function() {
-
+	var rpsRockChoice = function() {
 		var computerChoice = Math.random();
 
 		if (computerChoice < 0.34) {
@@ -48,10 +49,9 @@ $(document).ready(function() {
 			experience = experience + 1;
 			$('#experience').text(experience);
 		};
-	});
+	};
 
-	$('.activePaper').click(function() {
-
+	var rpsPaperChoice = function() {
 		var computerChoice = Math.random();
 
 		if (computerChoice < 0.34) {
@@ -69,9 +69,9 @@ $(document).ready(function() {
 			$('#hitpoints').text(hitPoints);
 
 		};
-	});
+	};
 
-	$('.activeScissors').click(function() {
+	var rpsScissorsChoice = function() {
 
 		var computerChoice = Math.random();
 
@@ -89,6 +89,10 @@ $(document).ready(function() {
 			computerChoice = "scissors";
 			$('#RPSresults').text("You chose scissors and the computer chose scissors. It's a tie!");
 		};
-	});
+	};
+
+	$('.activeRock').on('click', rpsRockChoice);
+	$('.activePaper').on('click', rpsPaperChoice);
+	$('.activeScissors').on('click', rpsScissorsChoice);
 });
 
