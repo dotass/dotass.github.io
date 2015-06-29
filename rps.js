@@ -1,7 +1,17 @@
 $(document).ready(function() {
 
-	var hitPoints = 100;
+	var hitPoints = 10;
 	var experience = 0;
+	var loseHitPoints = function() {
+		hitPoints = hitPoints -1;
+		if(hitPoints === 0)
+		{
+			$('#rock').hide();
+			$('#paper').hide();
+			$('#scissors').hide();
+			$('#RPSresults').text("GAME OVER");
+		};
+		};
 
 	$('#rock').click(function() {
 
@@ -13,7 +23,7 @@ $(document).ready(function() {
 		} else if(computerChoice <= 0.67) {
 			computerChoice = "paper";
 			$('#RPSresults').text("You chose rock and the computer chose paper. You lose, for some reason!");
-			hitPoints = hitPoints - 1;
+			loseHitPoints();
 			$('#hitpoints').text(hitPoints);
 
 		} else {
@@ -39,7 +49,7 @@ $(document).ready(function() {
 		} else {
 			computerChoice = "scissors";
 			$('#RPSresults').text("You chose paper and the computer chose scissors. Snip, snip - LOSE!");
-			hitPoints = hitPoints - 1;
+			loseHitPoints();
 			$('#hitpoints').text(hitPoints);
 
 		};
@@ -52,7 +62,7 @@ $(document).ready(function() {
 		if (computerChoice < 0.34) {
 			computerChoice = "rock";
 			$('#RPSresults').text("You chose scissors and the computer chose rock. Bash, bash - LOSE!");
-			hitPoints = hitPoints - 1;
+			loseHitPoints();
 			$('#hitpoints').text(hitPoints);
 		} else if(computerChoice <= 0.67) {
 			computerChoice = "paper";
@@ -62,24 +72,7 @@ $(document).ready(function() {
 		} else {
 			computerChoice = "scissors";
 			$('#RPSresults').text("You chose scissors and the computer chose scissors. It's a tie!");
-
-
 		};
 	});
-/*
-	$('.left').click(function() {
-		$('#RPSresults').text('This debug text says you clicked on the left div!');
-	});
-
-	$('.right').click(function() {
-		$('#RPSresults').text('This debug text says you clicked on the right div!');
-	});
-
-	$('#footer').click(function() {
-		$('#RPSresults').text('This debug text says you clicked on the footer div!');
-	});
-*/
-
-
 });
 
