@@ -2,14 +2,15 @@ $(document).ready(function() {
 
 	var hitPoints = 10;
 	var experience = 0;
+
 	var loseHitPoints = function() {
 		hitPoints = hitPoints -1;
 		if(hitPoints === 0)
 		{
 
-			$('.active-rock').off('click', rpsRockChoice);
-			$('.active-paper').off('click', rpsPaperChoice);
-			$('.active-scissors').off('click', rpsScissorsChoice);
+			$('.active-rock').off('click', rockClickChoice);
+			$('.active-paper').off('click', paperClickChoice);
+			$('.active-scissors').off('click', scissorsClickChoice);
 
 			$('#rock').fadeOut('slow');
 			$('#paper').fadeOut('slow');
@@ -26,73 +27,68 @@ $(document).ready(function() {
 			}
 			else
 			{
-				$('#game-over-text').text("Next time... do what Bart Simpson does.");
+				$('#game-over-text').text("Next time, Gadget. Next time!");
 			}
 		};
 	};
 
-	var rpsRockChoice = function() {
-		var computerChoice = Math.random();
+	var rpsComputerChoice = function () {
+		var myChoice = Math.floor(Math.random() * (3) + 1);
 
-		if (computerChoice < 0.34) {
-			computerChoice = "rock";
-			$('#rps-results').text("You chose rock and the computer chose rock. It's a tie!");
-		} else if(computerChoice <= 0.67) {
-			computerChoice = "paper";
-			$('#rps-results').text("You chose rock and the computer chose paper. You lose, for some reason!");
-			loseHitPoints();
-			$('#hit-points').text(hitPoints);
-
-		} else {
-			computerChoice = "scissors";
-			$('#rps-results').text("You chose rock and the computer chose scissors. Bash, bash, bash. Win, win, win!");
-			experience = experience + 1;
-			$('#experience').text(experience);
-		};
+		switch(myChoice) {
+			case 1:
+				return "rock";
+			case 2:
+				return "paper";
+			case 3:
+				return "scissors";
+		}
 	};
 
-	var rpsPaperChoice = function() {
-		var computerChoice = Math.random();
+	var rpsPlayerChoice = function(playerChoice) {
+		var computerChoice = rpsComputerChoice();
 
-		if (computerChoice < 0.34) {
-			computerChoice = "rock";
-			$('#rps-results').text("You chose paper and the computer chose rock. You win, for some reason!");
+		$('#rps-results').text("Player choice is being passed through. It is "+playerChoice+".");
+
+		var results = compareChoice(playerChoice, computerChoice);
+
+		if(results === "win")
+		{
+			$('#rps-results').text("You chose "+playerChoice+" and the computer chose "+computerChoice+". You win!");
 			experience = experience + 1;
 			$('#experience').text(experience);
-		} else if(computerChoice <= 0.67) {
-			computerChoice = "paper";
-			$('#rps-results').text("You chose paper and the computer chose paper. It's a tie!");
-		} else {
-			computerChoice = "scissors";
-			$('#rps-results').text("You chose paper and the computer chose scissors. Snip, snip - LOSE!");
+		}
+		else if(results === "lose")
+		{
+			$('#rps-results').text("You chose "+playerChoice+" and the computer chose "+computerChoice+". You lose!");
 			loseHitPoints();
 			$('#hit-points').text(hitPoints);
+		}
+		else if(results === "tie")
+		{
+			$('#rps-results').text("You both chose "+playerChoice+". It's a tie!");
+		}
 
-		};
 	};
 
-	var rpsScissorsChoice = function() {
+	var compareChoice = function(playerChoice, computerChoice) {
 
-		var computerChoice = Math.random();
+		if(playerChoice === computerChoice) {
+			return "tie";
+		}
+		else if((playerChoice === "rock" && computerChoice === "scissors") || (playerChoice === "paper" && computerChoice === "rock") || (playerChoice === "scissors" && computerChoice === "paper")) {
+			return "win";
+		}
+		else return "lose";
 
-		if (computerChoice < 0.34) {
-			computerChoice = "rock";
-			$('#rps-results').text("You chose scissors and the computer chose rock. Bash, bash - LOSE!");
-			loseHitPoints();
-			$('#hit-points').text(hitPoints);
-		} else if(computerChoice <= 0.67) {
-			computerChoice = "paper";
-			$('#rps-results').text("You chose scissors and the computer chose paper. Snip, snip - WIN!");
-			experience = experience + 1;
-			$('#experience').text(experience);
-		} else {
-			computerChoice = "scissors";
-			$('#rps-results').text("You chose scissors and the computer chose scissors. It's a tie!");
-		};
 	};
 
-	$('.active-rock').on('click', rpsRockChoice);
-	$('.active-paper').on('click', rpsPaperChoice);
-	$('.active-scissors').on('click', rpsScissorsChoice);
+	var rockClickChoice = function() { rpsPlayerChoice("rock") };
+	var paperClickChoice = function() { rpsPlayerChoice("paper") };
+	var scissorsClickChoice = function() { rpsPlayerChoice("scissors") };
+
+	$('.active-rock').on('click', rockClickChoice);
+	$('.active-paper').on('click', paperClickChoice);
+	$('.active-scissors').on('click', scissorsClickChoice);
 });
 
