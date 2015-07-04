@@ -3,28 +3,36 @@
 	<head>
 		<link type="text/css" rel="stylesheet" href="stylesheet.css"/>
 
+		<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+		<script type="text/javascript" src="dateTest.js"></script>
+
 		<title>Resume</title>
 	</head>
 	<body>
-		<div class="full-screen-div" id='header'>
+		<div class="full-screen-div header-or-footer" id="header">
             <h1>Status Bar</h1>
             <h2>Blah</p>
         </div>
-        <div class='left'>
-            <h2 class='center-text'>Experiments</h2>
+        <div class="multi-part-div two-part two-part-left">
+            <h2 class="center-text">Experiments</h2>
             <ul>
-                <li><a href='divtest.html'>Div Test!</a></li>
-                <li><a href='clicktest.html'>Click Test!</a></li>
-                <li><a href='rpstest.html'>RPS Test!</a></li>
+                <li><a href="divtest.html">Div Test!</a></li>
+                <li><a href="clicktest.html">Click Test!</a></li>
+                <li><a href="rpstest.html">RPS Test!</a></li>
             </ul>
         </div>
-        <div class='right'></div>
-        <div class="three-part-left"></div>
-        <div class="three-part-center"></div>
-        <div class="three-part-right"></div>
-        <div class="full-screen-div" id='footer'>
-            <p class='pfooter'>Copyright "In Laman's Terms" 2015</p>
-            <p class='pfooter'>Nothing to see here!</p>
+        <div class="multi-part-div two-part two-part-right"></div>
+        <div class="multi-part-div three-part three-part-cap"></div>
+        <div class="multi-part-div three-part">
+        	<p>Today's date is:</p>
+        	<p id="p-date"></p>
+        	<p>The time is:</p>
+        	<p id="p-time"></p>
+        </div>
+        <div class="multi-part-div three-part three-part-cap"></div>
+        <div class="full-screen-div header-or-footer" id='footer'>
+            <p class="pfooter">Copyright "In Laman's Terms" 2015</p>
+            <p class="pfooter">Nothing to see here!</p>
         </div>
 	</body>
 </html>

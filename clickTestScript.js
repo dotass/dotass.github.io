@@ -5,7 +5,7 @@ $(document).ready(function() {
 	$('#clicker').click(function() {
 		clickNum = clickNum + 1;
 
-		$('#full-screen').text(clickNum);
+		$('#click-results').text(clickNum);
 	});
 });
 
