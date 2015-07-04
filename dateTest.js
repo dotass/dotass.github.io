@@ -30,22 +30,23 @@ $(document).ready(function() {
 
 	};
 
-	var d = new Date();
-	var monthNumber = d.getMonth();
+	var d1 = new Date();
+	var monthNumber = d1.getMonth();
 
-	var dateString = convertMonth(monthNumber)+" "+d.getDate()+", "+d.getFullYear()+".";
+	var dateString = convertMonth(monthNumber)+" "+d1.getDate()+", "+d1.getFullYear()+".";
 
 	var currentTime = function() {
-		var d = new Date();
-		var timeString = d.getHours()+":"+d.getMinutes()+":"+d.getSeconds();
+		var d2 = new Date();
+		var timeString = d2.getHours()+":"+d2.getMinutes()+":"+d2.getSeconds();
+		var timeOpen = Math.floor((d2 - d1)/1000)+" seconds.";
 
 		$('#p-time').text(timeString);
+		$('#p-date').text(dateString);
+		$('#p-loaded-time').text(timeOpen);
 	};
 
-
-	$('#p-date').text(dateString);
 	currentTime();
 
-	setInterval(function() {currentTime()}, 5000);
+	setInterval(function() {currentTime()}, 1000);
 
 });
