@@ -49,4 +49,25 @@ $(document).ready(function() {
 
 	setInterval(function() {currentTime()}, 1000);
 
+	var verticalHeight = function(window, $) {
+	    'use strict';
+
+	    $('.vertical-center').each(function () {
+	        var $this = $(this),
+	            $child = $this.children(':first'),
+	            outerHeight = $this.height(),
+	            innerHeight = $child.height();
+
+	        $child.css({position: 'relative', top: '50%', marginTop: '-' + (innerHeight / 2) + 'px'})
+	    });
+	};
+
+	verticalHeight(window, $);
+
+	var resizeHeight = function() {
+		verticalHeight(window, $);
+	};
+
+	$(window).on('resize', function() { resizeHeight() });
 });
+

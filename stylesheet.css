@@ -61,6 +61,7 @@ div.container {
 	background-color: #D6C2FF;
 	padding: 4px;
 	position: relative;
+	overflow-y: auto
 }
 
 div.inner-container {
@@ -204,6 +205,12 @@ p {
 	line-height: 140px;
 }
 
+.vertical-center {
+    overflow: hidden;
+    position: relative;
+}
+
+
 #clicker {
 	margin-bottom: 1%;
 }
@@ -232,23 +239,12 @@ p {
 	#header {
 		position: relative;
 		}
-	.left {
+	div.container {
 		float: none;
-		width: auto;
+		width: 98%;
 		margin: 1%;
-		height: auto;
 	}
-	.right {
-		float: none;
-		width: auto;
-		margin: 1%;
-		height: auto;
-	}
-	h1 {
+	h1, h2, h3, p {
 		font-size: 100%;
 	}
-	centerOfDiv {
-		font-size: 100%;
-	}
-	
 }
