@@ -1,4 +1,5 @@
-$(document).ready(function() {
+function clickTestScript(window, $) {
+	'use strict';
 
 	var clickNum = 0;
 
@@ -7,5 +8,7 @@ $(document).ready(function() {
 
 		$('#click-results').text(clickNum);
 	});
-});
+};
+
+$(document).ready(clickTestScript.bind({}, window, $));
 

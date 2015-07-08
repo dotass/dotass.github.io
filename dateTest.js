@@ -1,4 +1,5 @@
-$(document).ready(function() {
+function dateTest(window, $) {
+	'use strict';
 
 	var convertMonth = function(month) {
 		switch(month) {
@@ -69,5 +70,6 @@ $(document).ready(function() {
 	};
 
 	$(window).on('resize', function() { resizeHeight() });
-});
+};
 
+$(document).ready(dateTest.bind({}, window, $));

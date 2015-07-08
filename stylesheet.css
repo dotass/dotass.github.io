@@ -65,11 +65,42 @@ div.container {
 }
 
 div.inner-container {
-	position:absolute;
+	position: absolute;
 	height: 140px;
 	width: 100%;
 	top: 50%;
 	margin-top: -34px;
+}
+
+div.blogger {
+	border-radius: 5px;
+	border: 2px solid black;
+	background-color: #FFFFFF;
+	padding: 4px;
+}
+
+div.sidebar {
+	margin-left: 1%;
+	margin-right: 1%;
+	margin-bottom: 1%;
+	height: 750px;
+	width: calc(14% - 12px);
+}
+
+div.sidebar-left {
+	float: left;
+}
+
+div.sidebar-right {
+	float: right;
+}
+
+div.blog-container {
+	position: relative;
+	margin-bottom: 1%;
+	height: auto;
+	width: calc(68% - 12px);
+	float: left;
 }
 
 h1 {
@@ -138,7 +169,7 @@ p {
 
 .img-rps {
 	width: auto;
-	height: 140px;
+	height: 136px;
 	text-align: center;
 }
 
@@ -239,12 +270,29 @@ p {
 	#header {
 		position: relative;
 		}
+	
 	div.container {
 		float: none;
 		width: 98%;
 		margin: 1%;
 	}
+	
+	div.sidebar {
+		float: none;
+		border: 0px;
+		padding: 0px;
+		width: 0px;
+		height: 0px;
+		margin: 1%;
+	}
+	
+	div.blog-container {
+		width: 98%;
+		margin: 1%;
+	}
+	
 	h1, h2, h3, p {
 		font-size: 100%;
 	}
+	
 }

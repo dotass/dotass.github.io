@@ -1,4 +1,5 @@
-$(document).ready(function() {
+function rps(window, $) {
+	'use strict';
 
 	var hitPoints = 10;
 	var experience = 0;
@@ -90,5 +91,6 @@ $(document).ready(function() {
 	$('.active-rock').on('click', rockClickChoice);
 	$('.active-paper').on('click', paperClickChoice);
 	$('.active-scissors').on('click', scissorsClickChoice);
-});
+};
 
+$(document).ready(rps.bind({}, window, $));
