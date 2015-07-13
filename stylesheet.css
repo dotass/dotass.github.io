@@ -136,14 +136,11 @@ p {
     }
 
 .center-of-div {
-	line-height: 80px;
-	margin-top: 30px;
-	margin-bottom: 30px;
+	line-height: 140px;
 }
 
 .center-text {
 	text-align:center;
-	line-height: 140px;
 }
 
 .five-part {
