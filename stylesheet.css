@@ -139,11 +139,11 @@ p {
 	line-height: 80px;
 	margin-top: 30px;
 	margin-bottom: 30px;
-
 }
 
 .center-text {
 	text-align:center;
+	line-height: 140px;
 }
 
 .five-part {
@@ -214,6 +214,11 @@ p {
 	text-align: center;
 }
 
+.six-part {
+	width: calc(15.5% - 12px);
+	margin-left: 1%;
+}
+
 .three-part {
 	width: calc(32% - 12px);
 	margin-left: 1%;
@@ -237,10 +242,17 @@ p {
 }
 
 .vertical-center {
-    overflow: hidden;
-    position: relative;
+	overflow: hidden;
+	position: relative;
 }
 
+#active-number-of-dice {
+	background-color: #FFFFFF;
+}
+
+#active-dice-capacity {
+	background-color: #FFFFFF;
+}
 
 #clicker {
 	margin-bottom: 1%;
