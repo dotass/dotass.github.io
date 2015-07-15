@@ -1,14 +1,15 @@
-function clickTestScript(window, $) {
+(function (window, $) {
 	'use strict';
 
-	var clickNum = 0;
+	var $clicker = $('#clicker'),
+		$clickResults = $('#click-results'),
+		clickNum = 0;
 
-	$('#clicker').click(function() {
+	function clickUp() {
 		clickNum = clickNum + 1;
+		$clickResults.text(clickNum);
+	};
 
-		$('#click-results').text(clickNum);
-	});
-};
+	$clicker.on('click', clickUp);
 
-$(document).ready(clickTestScript.bind({}, window, $));
-
+})(window, $);

@@ -1,39 +1,52 @@
-function rps(window, $) {
+(function (window, $) {
 	'use strict';
 
-	var hitPoints = 10;
-	var experience = 0;
+	var $activeRock = $('.active-rock'),
+		$activePaper = $('.active-paper'),
+		$activeScissors = $('.active-scissors'),
+		$rockID = $('#rock'),
+		$paperID = $('#paper'),
+		$scissorsID = $('#scissors'),
+		$rpsResults = $('#rps-results'),
+		$gameOverText = $('#game-over-text'),
+		$experienceID = $('#experience'),
+		$hitPointsID = $('#hit-points'),
+		hitPoints = 10,
+		experience = 0,
+		rockClickChoice,
+		paperClickChoice,
+		scissorsClickChoice;
 
-	var loseHitPoints = function() {
+	function loseHitPoints() {
 		hitPoints = hitPoints -1;
 		if(hitPoints === 0)
 		{
 
-			$('.active-rock').off('click', rockClickChoice);
-			$('.active-paper').off('click', paperClickChoice);
-			$('.active-scissors').off('click', scissorsClickChoice);
+			$activeRock.off('click', rockClickChoice);
+			$activePaper.off('click', paperClickChoice);
+			$activeScissors.off('click', scissorsClickChoice);
 
-			$('#rock').fadeOut('slow');
-			$('#paper').fadeOut('slow');
-			$('#scissors').fadeOut('slow');
+			$rockID.fadeOut('slow');
+			$paperID.fadeOut('slow');
+			$scissorsID.fadeOut('slow');
 
-			$('#rps-results').text("GAME OVER");
+			$rpsResults.text("GAME OVER");
 			if(experience === 10)
 			{
-				$('#game-over-text').text("Win some, lose some, tie some. Hooray!");
+				$gameOverText.text("Win some, lose some, tie some. Hooray!");
 			}
 			else if(experience > 10)
 			{
-				$('#game-over-text').text("Luck is with you today!");
+				$gameOverText.text("Luck is with you today!");
 			}
 			else
 			{
-				$('#game-over-text').text("Next time, Gadget. Next time!");
+				$gameOverText.text("Next time, Gadget. Next time!");
 			}
 		};
 	};
 
-	var rpsComputerChoice = function () {
+	function rpsComputerChoice() {
 		var myChoice = Math.floor(Math.random() * (3) + 1);
 
 		switch(myChoice) {
@@ -46,33 +59,34 @@ function rps(window, $) {
 		}
 	};
 
-	var rpsPlayerChoice = function(playerChoice) {
-		var computerChoice = rpsComputerChoice();
+	function rpsPlayerChoice(playerChoice) {
+		var computerChoice = rpsComputerChoice(),
+			results;
 
-		$('#rps-results').text("Player choice is being passed through. It is "+playerChoice+".");
+		$rpsResults.text("Player choice is being passed through. It is "+playerChoice+".");
 
-		var results = compareChoice(playerChoice, computerChoice);
+		results = compareChoice(playerChoice, computerChoice);
 
 		if(results === "win")
 		{
-			$('#rps-results').text("You chose "+playerChoice+" and the computer chose "+computerChoice+". You win!");
+			$rpsResults.text("You chose "+playerChoice+" and the computer chose "+computerChoice+". You win!");
 			experience = experience + 1;
-			$('#experience').text(experience);
+			$experienceID.text(experience);
 		}
 		else if(results === "lose")
 		{
-			$('#rps-results').text("You chose "+playerChoice+" and the computer chose "+computerChoice+". You lose!");
+			$rpsResults.text("You chose "+playerChoice+" and the computer chose "+computerChoice+". You lose!");
 			loseHitPoints();
-			$('#hit-points').text(hitPoints);
+			$hitPointsID.text(hitPoints);
 		}
 		else if(results === "tie")
 		{
-			$('#rps-results').text("You both chose "+playerChoice+". It's a tie!");
+			$rpsResults.text("You both chose "+playerChoice+". It's a tie!");
 		}
 
 	};
 
-	var compareChoice = function(playerChoice, computerChoice) {
+	function compareChoice(playerChoice, computerChoice) {
 
 		if(playerChoice === computerChoice) {
 			return "tie";
@@ -84,13 +98,12 @@ function rps(window, $) {
 
 	};
 
-	var rockClickChoice = function() { rpsPlayerChoice("rock") };
-	var paperClickChoice = function() { rpsPlayerChoice("paper") };
-	var scissorsClickChoice = function() { rpsPlayerChoice("scissors") };
+	rockClickChoice = function() { rpsPlayerChoice("rock") };
+	paperClickChoice = function() { rpsPlayerChoice("paper") };
+	scissorsClickChoice = function() { rpsPlayerChoice("scissors") };
 
-	$('.active-rock').on('click', rockClickChoice);
-	$('.active-paper').on('click', paperClickChoice);
-	$('.active-scissors').on('click', scissorsClickChoice);
-};
+	$activeRock.on('click', rockClickChoice);
+	$activePaper.on('click', paperClickChoice);
+	$activeScissors.on('click', scissorsClickChoice);
 
-$(document).ready(rps.bind({}, window, $));
+})(window, $);

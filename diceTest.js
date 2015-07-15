@@ -1,4 +1,4 @@
-function clickTestScript(window, $) {
+(function (window, $) {
 	'use strict';
 
 	var $rollButton = $('.roll-button'),
@@ -21,10 +21,12 @@ function clickTestScript(window, $) {
 	};
 
 	function rollDice() {
-		var diceRollTotal = 0;
+		var diceRollTotal = 0,
+			i,
+			tempRoll;
 
-		for(var i = 0; i < diceQuantity; i++) {
-			var tempRoll = Math.floor(Math.random() * diceSize + 1);
+		for(i = 0; i < diceQuantity; i++) {
+			tempRoll = Math.floor(Math.random() * diceSize + 1);
 
 			diceRollTotal = diceRollTotal + tempRoll;
 		};
@@ -34,6 +36,5 @@ function clickTestScript(window, $) {
 	$rollButton.on('click', rollDice);
 	$diceCount.on('click', setDiceCount);
 	$diceSize.on('click', setDiceSize);
-};
 
-$(document).ready(clickTestScript.bind({}, window, $));
+})(window, $);

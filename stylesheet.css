@@ -219,6 +219,10 @@ p {
 	text-align: center;
 }
 
+.script {
+	display: none;
+}
+
 .six-part {
 	width: calc(15.5% - 12px);
 	margin-left: 1%;

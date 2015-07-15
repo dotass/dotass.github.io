@@ -1,9 +1,12 @@
-function divTestScript(window, $) {
+(function (window, $) {
 	'use strict';
 
-	$('div').click(function() {
-		$(this).fadeOut('slow');
-	});
-};
+	var $div = $('div');
 
-$(document).ready(divTestScript.bind({}, window, $));
+	function byeBye() {
+		$(this).fadeOut('slow');
+	};
+
+	$div.on('click', byeBye);
+
+})(window, $);

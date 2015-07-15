@@ -1,7 +1,15 @@
-function dateTest(window, $) {
+(function (window, $) {
 	'use strict';
 
-	var convertMonth = function(month) {
+	var $pTime = $('#p-time'),
+		$pDate = $('#p-date'),
+		$pLoadedTime = $('#p-loaded-time'),
+		$verticalCenter = $('.vertical-center'),
+		d1 = new Date(),
+		monthNumber = d1.getMonth(),
+		dateString = convertMonth(monthNumber)+" "+d1.getDate()+", "+d1.getFullYear()+".";
+
+		function convertMonth(month) {
 		switch(month) {
 			case 0:
 				return "January";
@@ -27,49 +35,39 @@ function dateTest(window, $) {
 				return "November";
 			case 11:
 				return "December";
-		}
+			}
+		};
 
-	};
+		function currentTime() {
+			var d2 = new Date(),
+				timeString = d2.getHours()+":"+d2.getMinutes()+":"+d2.getSeconds(),
+				timeOpen = Math.floor((d2 - d1)/1000)+" seconds.";
 
-	var d1 = new Date();
-	var monthNumber = d1.getMonth();
+			$pTime.text(timeString);
+			$pDate.text(dateString);
+			$pLoadedTime.text(timeOpen);
+		};
 
-	var dateString = convertMonth(monthNumber)+" "+d1.getDate()+", "+d1.getFullYear()+".";
+		function verticalHeight(window, $) {
+		    'use strict';
 
-	var currentTime = function() {
-		var d2 = new Date();
-		var timeString = d2.getHours()+":"+d2.getMinutes()+":"+d2.getSeconds();
-		var timeOpen = Math.floor((d2 - d1)/1000)+" seconds.";
+		    $verticalCenter.each(function () {
+		        var $this = $(this),
+		            $child = $this.children(':first'),
+		            outerHeight = $this.height(),
+		            innerHeight = $child.height();
 
-		$('#p-time').text(timeString);
-		$('#p-date').text(dateString);
-		$('#p-loaded-time').text(timeOpen);
-	};
+		        $child.css({position: 'relative', top: '50%', marginTop: '-' + (innerHeight / 2) + 'px'})
+		    });
+		};
+
+		function resizeHeight() {
+			verticalHeight(window, $);
+		};
 
 	currentTime();
-
-	setInterval(function() {currentTime()}, 1000);
-
-	var verticalHeight = function(window, $) {
-	    'use strict';
-
-	    $('.vertical-center').each(function () {
-	        var $this = $(this),
-	            $child = $this.children(':first'),
-	            outerHeight = $this.height(),
-	            innerHeight = $child.height();
-
-	        $child.css({position: 'relative', top: '50%', marginTop: '-' + (innerHeight / 2) + 'px'})
-	    });
-	};
-
+	setInterval(function() {currentTime()}, 980);
 	verticalHeight(window, $);
-
-	var resizeHeight = function() {
-		verticalHeight(window, $);
-	};
-
 	$(window).on('resize', function() { resizeHeight() });
-};
 
-$(document).ready(dateTest.bind({}, window, $));
+})(window, $);
