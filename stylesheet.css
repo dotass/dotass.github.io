@@ -64,6 +64,14 @@ div.container {
 	overflow-y: auto
 }
 
+div.container.active-number-of-dice {
+	background-color: #FFFFFF;
+}
+
+div.container.active-dice-capacity {
+	background-color: #FFFFFF;
+}
+
 div.inner-container {
 	position: absolute;
 	height: 140px;
@@ -241,15 +249,6 @@ p {
 .vertical-center {
 	overflow: hidden;
 	position: relative;
-}
-
-
-#active-number-of-dice {
-	background-color: #FFFFFF;
-}
-
-#active-dice-capacity {
-	background-color: #FFFFFF;
 }
 
 #clicker {

@@ -9,21 +9,23 @@ function clickTestScript(window, $) {
 	var diceQuantity = 0;
 
 	function rollIt() {
-		diceQuantity = document.getElementById('active-number-of-dice').getAttribute('data-dice-quantity');
-		diceSize = document.getElementById('active-dice-capacity').getAttribute('data-dice-size');
+		diceQuantity = $('.active-number-of-dice').getAttribute('data-dice-quantity');
+		diceSize = $('.active-dice-capacity').getAttribute('data-dice-size');
 
 		var diceResults = rollDice();
 	};
 
-	$('.dice-count').click(function() {
-		$('#active-number-of-dice').removeAttr('id');
-		$(this).attr('id', 'active-number-of-dice');
-	});
+	function setDiceCount() {
+		$('.active-number-of-dice').removeClass('active-number-of-dice');
+		$('#dice-results').text("Debug text: "+this);
+		$(this).addClass('active-number-of-dice');
+	};
 
-	$('.dice-size').click(function() {
-		$('#active-dice-capacity').removeAttr('id');
-		$(this).attr('id', 'active-dice-capacity');
-	});
+	function setDiceSize() {
+		$('.active-dice-capacity').removeClass('active-dice-capacity');
+		$('#dice-results').text("Debug text: "+this);
+		$(this).addClass('active-dice-capacity');
+	};
 
 	function rollDice() {
 		var diceRollTotal = 0;
@@ -36,8 +38,9 @@ function clickTestScript(window, $) {
 		$('#dice-results').text("The computer rolled "+diceQuantity+"d"+diceSize+", and rolled a "+diceRollTotal+".");
 	};
 
-	$rollButton.on('click', function() { rollIt() });
-
+	$rollButton.on('click', rollIt());
+	$diceCount.on('click', setDiceCount());
+	$diceSize.on('click', setDiceSize());
 };
 
 $(document).ready(clickTestScript.bind({}, window, $));
