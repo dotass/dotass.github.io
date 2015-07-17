@@ -9,7 +9,7 @@
 		monthNumber = d1.getMonth(),
 		dateString = convertMonth(monthNumber)+" "+d1.getDate()+", "+d1.getFullYear()+".";
 
-		function convertMonth(month) {
+	function convertMonth(month) {
 		switch(month) {
 			case 0:
 				return "January";
@@ -36,38 +36,32 @@
 			case 11:
 				return "December";
 			}
-		};
+	};
 
-		function currentTime() {
-			var d2 = new Date(),
-				timeString = d2.getHours()+":"+d2.getMinutes()+":"+d2.getSeconds(),
-				timeOpen = Math.floor((d2 - d1)/1000)+" seconds.";
+	function setCurrentTime() {
+		var d2 = new Date(),
+			timeString = d2.getHours()+":"+d2.getMinutes()+":"+d2.getSeconds(),
+			timeOpen = Math.floor((d2 - d1)/1000)+" seconds.";
 
-			$pTime.text(timeString);
-			$pDate.text(dateString);
-			$pLoadedTime.text(timeOpen);
-		};
+		$pTime.text(timeString);
+		$pDate.text(dateString);
+		$pLoadedTime.text(timeOpen);
+	};
 
-		function verticalHeight(window, $) {
-		    'use strict';
+	function applyVerticalCentering() {
+	    $verticalCenter.each(function () {
+	       var $this = $(this),
+	           $child = $this.children(':first'),
+	           outerHeight = $this.height(),
+	           innerHeight = $child.height();
 
-		    $verticalCenter.each(function () {
-		        var $this = $(this),
-		            $child = $this.children(':first'),
-		            outerHeight = $this.height(),
-		            innerHeight = $child.height();
+	       $child.css({position: 'relative', top: '50%', marginTop: '-' + (innerHeight / 2) + 'px'})
+	    });
+	};
 
-		        $child.css({position: 'relative', top: '50%', marginTop: '-' + (innerHeight / 2) + 'px'})
-		    });
-		};
-
-		function resizeHeight() {
-			verticalHeight(window, $);
-		};
-
-	currentTime();
-	setInterval(function() {currentTime()}, 980);
-	verticalHeight(window, $);
-	$(window).on('resize', function() { resizeHeight() });
+	setCurrentTime();
+	setInterval(setCurrentTime, 980);
+	applyVerticalCentering();
+	$(window).on('resize', applyVerticalCentering);
 
 })(window, $);

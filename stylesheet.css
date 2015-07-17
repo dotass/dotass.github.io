@@ -72,6 +72,10 @@ div.container.active-dice-capacity {
 	background-color: #FFFFFF;
 }
 
+div.container.no-height {
+	height: auto;
+}
+
 div.inner-container {
 	position: absolute;
 	height: 140px;
