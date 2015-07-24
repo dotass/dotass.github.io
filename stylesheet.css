@@ -175,6 +175,9 @@ p {
 	clear: both;
 }
 
+.hidden {
+	display: none;
+}
 
 .img-rps {
 	width: auto;

@@ -6,6 +6,7 @@
 	    $diceSize = $('.dice-size'),
 	    $diceResults = $('#dice-results'),
 	    $individualDiceResults = $('#individual-dice-results'),
+	    $footer = $('#footer'),
 	    diceSize = 6,
 	    diceQuantity = 1;
 
@@ -50,6 +51,7 @@
 
 	function logResults(diceRollTotal, individualDiceResults) {
 		var d = new Date();
+		$footer.removeClass("hidden");
 		$individualDiceResults.prepend("<li>"+d.toUTCString()+" - Rolled "+diceQuantity+"d"+diceSize+", with a result of: "+diceRollTotal+". Individual rolls: "+individualDiceResults);
 	};
 
